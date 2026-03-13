@@ -1,0 +1,229 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-50: #E6F1FB;
+  --blue-200: #85B7EB;
+  --blue-600: #185FA5;
+  --blue-800: #0C447C;
+  --gray-50: #F1EFE8;
+  --gray-100: #D3D1C7;
+  --gray-400: #888780;
+  --gray-600: #5F5E5A;
+  --gray-900: #2C2C2A;
+  --text: #1a1a18;
+  --text-muted: #5F5E5A;
+  --border: rgba(0,0,0,0.12);
+  --bg: #f8f7f4;
+  --surface: #ffffff;
+  --radius: 12px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  background: rgba(248, 247, 244, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-bg { fill: var(--gray-900); }
+.logo-bars { stroke: #f8f7f4; }
+
+.logo-text {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  font-family: 'Georgia', serif;
+  color: var(--gray-900);
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  transition: color 0.15s;
+}
+
+.nav-link:hover,
+.nav-link--active {
+  color: var(--text);
+}
+
+/* Main */
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 5rem 2rem 4rem;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-family: system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-800);
+  background: var(--blue-50);
+  border: 1px solid var(--blue-200);
+  padding: 4px 12px;
+  border-radius: 100px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.hero-sub {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-family: system-ui, sans-serif;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Drop zone */
+.drop-zone {
+  background: var(--surface);
+  border: 1.5px dashed var(--gray-100);
+  border-radius: var(--radius);
+  padding: 3.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.drop-zone--active {
+  border-color: var(--blue-600);
+  background: var(--blue-50);
+}
+
+.drop-zone--filled {
+  border-style: solid;
+  border-color: var(--gray-100);
+}
+
+.file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.drop-icon svg,
+.file-icon svg {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.75rem;
+}
+
+.icon-rect {
+  stroke: var(--gray-400);
+  fill: none;
+}
+
+.icon-plus,
+.icon-line {
+  stroke: var(--gray-400);
+}
+
+.icon-check {
+  stroke: var(--blue-600);
+}
+
+.drop-zone--active .icon-rect,
+.drop-zone--active .icon-plus {
+  stroke: var(--blue-600);
+}
+
+.drop-label {
+  font-size: 15px;
+  font-family: system-ui, sans-serif;
+  color: var(--text);
+  font-weight: 500;
+  text-align: center;
+  max-width: 300px;
+  word-break: break-all;
+}
+
+.drop-sub {
+  font-size: 13px;
+  font-family: system-ui, sans-serif;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.browse-btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-family: system-ui, sans-serif;
+  color: var(--gray-900);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+  z-index: 2;
+}
+
+.browse-btn:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+}
