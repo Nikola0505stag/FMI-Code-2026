@@ -1,56 +1,35 @@
-# FastAPI Backend (AI vs Real Voice)
+# AI Voice Detector 
 
-## Project structure
+# Backend
 
-```text
-backend/
-  app/
-    api/
-      __init__.py
-      routes.py
-    core/
-      config.py
-    ml/
-      __init__.py
-      mla.py
-    schemas/
-      __init__.py
-      prediction.py
-    services/
-      __init__.py
-      inference.py
-    __init__.py
-    main.py
-  .env.example
-  requirements.txt
-  README.md
-```
+FastAPI API for voice classification (`.wav` in, JSON out).
 
-## Run locally
+## Run (PowerShell)
 
-```bash
+```powershell
 cd backend
 python -m venv .venv
-.venv\\Scripts\\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 ```
+
+Docs: `http://127.0.0.1:8000/docs`
 
 ## Endpoints
 
-- `GET /health`
-- `POST /predict` (multipart form-data with field name `file` and `.wav` file)
+- `GET /health` -> `{"status": "ok"}`
+- `POST /predict` -> multipart form-data field `file` (`.wav` only)
 
-## cURL test
+## Test `/predict`
 
-```bash
-curl -X POST "http://127.0.0.1:8000/predict" ^
-  -H "accept: application/json" ^
-  -H "Content-Type: multipart/form-data" ^
-  -F "file=@sample.wav;type=audio/wav"
+```powershell
+curl.exe -X POST "http://127.0.0.1:8000/predict" `
+  -H "accept: application/json" `
+  -F "file=@C:\path\to\sample.wav;type=audio/wav"
 ```
 
-## Expected response
+## Response Format
 
 ```json
 {
@@ -59,8 +38,16 @@ curl -X POST "http://127.0.0.1:8000/predict" ^
 }
 ```
 
-## Integrate your real model
+## Model Contract
 
-Model is implemented in `app/ml/mla.py` and returns:
+`app/ml/mla.py` -> `MLA.predict(wav_bytes: bytes) -> dict`
 
-- `{"status": "ai" | "real", "accuracy": 0.0..1.0}`
+```python
+{"status": "ai" | "real", "accuracy": 0.0..1.0}
+```
+
+## Common Errors
+
+- `400`: invalid file or not real WAV
+- `413`: file too large
+- `500`: model inference failure
