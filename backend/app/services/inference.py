@@ -255,6 +255,8 @@ def run_inference(wav_bytes: bytes) -> dict:
         result = mla.predict(wav_bytes)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=f"Model is not ready: {exc}") from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail="Model inference failed.") from exc
 

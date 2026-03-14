@@ -4,7 +4,6 @@ from app.core.config import get_settings
 from app.schemas.prediction import PredictionResponse
 from app.services.inference import run_inference
 
-import io
 import subprocess
 
 router = APIRouter()
@@ -29,11 +28,22 @@ async def predict_voice(file: UploadFile = File(...)) -> PredictionResponse:
 
     wav_bytes = await file.read()
     if filename.endswith(".m4a"):
-        result = subprocess.run(
-        ["ffmpeg", "-i", "pipe:0", "-f", "wav", "-ar", "16000", "-ac", "1", "pipe:1"],
-        input=wav_bytes,
-        capture_output=True
-    )
+        try:
+            result = subprocess.run(
+                ["ffmpeg", "-i", "pipe:0", "-f", "wav", "-ar", "16000", "-ac", "1", "pipe:1"],
+                input=wav_bytes,
+                capture_output=True,
+                check=False,
+            )
+        except FileNotFoundError as exc:
+            raise HTTPException(
+                status_code=500,
+                detail="ffmpeg is not installed on the backend server.",
+            ) from exc
+
+        if result.returncode != 0 or not result.stdout:
+            raise HTTPException(status_code=400, detail="Could not decode uploaded m4a audio.")
+
         wav_bytes = result.stdout
     max_bytes = settings.max_file_size_mb * 1024 * 1024
 
