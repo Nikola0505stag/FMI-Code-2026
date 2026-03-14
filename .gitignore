@@ -17,6 +17,7 @@ frontend/.vite/
 
 # Backend generated artifacts
 backend/app/artifacts/
+backend/model/
 
 node_modules/
 ../.gitignore.swp

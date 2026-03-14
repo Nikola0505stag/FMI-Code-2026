@@ -19,6 +19,28 @@ Docs: `http://127.0.0.1:8000/docs`
 - `GET /health` -> `{"status": "ok"}`
 - `POST /predict` -> multipart form-data field `file` (`.wav` only)
 
+## Real Model Setup
+
+`app/ml/mla.py` now uses your real Wav2Vec2 model artifacts at runtime.
+
+Provide model artifacts using one of these options:
+
+1. `MODEL_DIR`: local folder containing files like `config.json`, `tokenizer_config.json`, `vocab.json`, and `model.safetensors`.
+2. `MODEL_ZIP_PATH`: local zip (for example your `final_model.zip`) that contains the trained model folder.
+3. `MODEL_RELEASE_URL`: direct URL to your Git release zip asset. Backend downloads and caches it automatically.
+
+By default, backend is preconfigured to download:
+
+`https://github.com/Nikola0505stag/FMI-Code-2026/releases/download/v1.0/final_model.zip`
+
+Downloaded and extracted artifacts are cached under `backend/model/`.
+
+Optional env vars:
+
+- `MODEL_TARGET_SR` (default `16000`)
+- `MODEL_TARGET_DURATION_SEC` (default `3.0`)
+- `MODEL_DEVICE` (`cpu` or `cuda`, default `cpu`)
+
 ## Test `/predict`
 
 ```powershell
