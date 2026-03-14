@@ -12,6 +12,15 @@ class Settings(BaseModel):
         for ext in os.getenv("ALLOWED_EXTENSIONS", ".wav").split(",")
         if ext.strip()
     )
+    model_dir: str = os.getenv("MODEL_DIR", "")
+    model_zip_path: str = os.getenv("MODEL_ZIP_PATH", "")
+    model_release_url: str = os.getenv(
+        "MODEL_RELEASE_URL",
+        "https://github.com/Nikola0505stag/FMI-Code-2026/releases/download/v1.0/final_model.zip",
+    )
+    model_target_sr: int = int(os.getenv("MODEL_TARGET_SR", "16000"))
+    model_target_duration_sec: float = float(os.getenv("MODEL_TARGET_DURATION_SEC", "3.0"))
+    model_device: str = os.getenv("MODEL_DEVICE", "cpu")
 
 
 @lru_cache(maxsize=1)

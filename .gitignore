@@ -15,6 +15,10 @@ frontend/node_modules/
 frontend/dist/
 frontend/.vite/
 
+# Backend generated artifacts
+backend/app/artifacts/
+backend/model/
+
 node_modules/
 ../.gitignore.swp
 frontend/package-lock.json
