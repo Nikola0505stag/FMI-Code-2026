@@ -29,6 +29,9 @@
             android:name=".CallGuardService"
             android:foregroundServiceType="microphone"
             android:exported="false" />
+
+        <service    android:name=".CallGuardService"
+                    android:foregroundServiceType="microphone" android:exported="false" />
     </application>
 
 </manifest>

@@ -17,7 +17,6 @@ class AudioCaptureManager {
     private val audioFormat = AudioFormat.ENCODING_PCM_16BIT
 
     // ПРАГ ЗА ТИШИНА: Ако силата на звука е под това число, го броим за тишина.
-    // Може да се наложи да го промениш (напр. 300 или 800) според микрофона.
     private val SILENCE_THRESHOLD = 500.0
 
     @SuppressLint("MissingPermission")
