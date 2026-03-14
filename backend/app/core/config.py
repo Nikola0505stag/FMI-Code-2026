@@ -9,7 +9,7 @@ class Settings(BaseModel):
     max_file_size_mb: int = int(os.getenv("MAX_FILE_SIZE_MB", "20"))
     allowed_extensions: tuple[str, ...] = tuple(
         ext.strip().lower()
-        for ext in os.getenv("ALLOWED_EXTENSIONS", ".wav").split(",")
+        for ext in os.getenv("ALLOWED_EXTENSIONS", ".wav,.m4a").split(",")
         if ext.strip()
     )
     model_dir: str = os.getenv("MODEL_DIR", "")
