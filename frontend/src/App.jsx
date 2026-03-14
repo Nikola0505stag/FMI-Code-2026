@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import About from "./About";
 
 function DropZone() {
   const [dragging, setDragging] = useState(false);
@@ -23,6 +24,8 @@ function DropZone() {
     const selected = e.target.files[0];
     if (selected) setFile(selected);
   };
+
+
 
   return (
     <div
@@ -74,6 +77,13 @@ function DropZone() {
 }
 
 export default function App() {
+
+  const [currentPage, setCurrentPage] = useState('home');
+
+  if (currentPage === 'about') {
+    return <About onBack={() => setCurrentPage('home')} />;
+  }
+
   return (
     <div className="app">
       <header className="header">
@@ -86,8 +96,8 @@ export default function App() {
             <span className="logo-text">AudioVerify</span>
           </div>
           <nav className="nav">
-            <a href="#" className="nav-link nav-link--active">Analyze</a>
-            <a href="#" className="nav-link">About</a>
+			<a href="#" className={`nav-link ${currentPage === 'home' ? 'nav-link--active' : ''}`} onClick={() => setCurrentPage('home')}>Analyze</a>
+			<a href="#" className={`nav-link ${currentPage === 'about' ? 'nav-link--active' : ''}`} onClick={() => setCurrentPage('about')}>About</a>
           </nav>
         </div>
       </header>
