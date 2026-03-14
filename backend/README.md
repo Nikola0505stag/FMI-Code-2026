@@ -39,8 +39,8 @@ curl.exe -X POST "http://127.0.0.1:8000/predict" `
       "start_sec": 2.25,
       "end_sec": 3.0,
       "score": 0.88,
-      "mel_image_url": "/artifacts/a1b2c3d4e5f6/part-0-mel.svg",
-      "mfcc_image_url": "/artifacts/a1b2c3d4e5f6/part-0-mfcc.svg"
+      "mel_image_url": "/artifacts/a1b2c3d4e5f6/part-0-mel.png",
+      "mfcc_image_url": "/artifacts/a1b2c3d4e5f6/part-0-mfcc.png"
     }
   ]
 }
@@ -50,6 +50,7 @@ Notes:
 
 - `suspicious_parts` is empty when `status` is `real`.
 - The `/artifacts/...` URLs are static files served by FastAPI.
+- Artifact images are real feature visualizations generated from audio windows (not placeholders).
 
 ## Model Contract
 
