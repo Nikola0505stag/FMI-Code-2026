@@ -187,14 +187,14 @@ class MLA:
 
             try:
                 import torch
-                from transformers import Wav2Vec2ForSequenceClassification, Wav2Vec2Processor
+                from transformers import Wav2Vec2FeatureExtractor, Wav2Vec2ForSequenceClassification
             except ImportError as exc:
                 raise RuntimeError(
                     "Missing model dependencies. Install 'torch' and 'transformers' in backend environment."
                 ) from exc
 
             model_dir = self._resolve_model_dir()
-            processor = Wav2Vec2Processor.from_pretrained(str(model_dir))
+            processor = Wav2Vec2FeatureExtractor.from_pretrained(str(model_dir))
             model = Wav2Vec2ForSequenceClassification.from_pretrained(str(model_dir))
 
             requested_device = self.settings.model_device.lower().strip()

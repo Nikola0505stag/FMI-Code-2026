@@ -7,6 +7,7 @@ scipy==1.15.1
 matplotlib==3.10.0
 transformers==4.48.1
 torch==2.6.0
+protobuf==5.29.3
 numpy==2.2.4
 scipy==1.14.1
 matplotlib==3.10.1
