@@ -16,7 +16,7 @@ class Settings(BaseModel):
     model_zip_path: str = os.getenv("MODEL_ZIP_PATH", "")
     model_release_url: str = os.getenv(
         "MODEL_RELEASE_URL",
-        "https://github.com/Nikola0505stag/FMI-Code-2026/releases/download/v1.0/final_model.zip",
+        "https://github.com/Nikola0505stag/FMI-Codes-2026/releases/download/v1.1/results.zip",
     )
     model_target_sr: int = int(os.getenv("MODEL_TARGET_SR", "16000"))
     model_target_duration_sec: float = float(os.getenv("MODEL_TARGET_DURATION_SEC", "3.0"))
