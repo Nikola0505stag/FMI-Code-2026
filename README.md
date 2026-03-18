@@ -66,7 +66,7 @@ npm react-native run-android
 
 ## 👥 The Team
 Proudly developed by the **FMI-Codes-2026** contributors:
-* **Team Members**: [Add Names Here]
+* **Team Members**: [Nikola Neychev, Valentin Vulkov, Dobromir Denev, Ivan Staev, Milan Georgiev, Vasil Mladenov]
 * **Special Thanks**: To the FMI Codes 2026 mentors and organizers.
 
 ---
