@@ -40,25 +40,28 @@ Our solution features a centralized custom-trained AI backend serving multiple c
 ```bash
 git clone [https://github.com/Nikola0505stag/FMI-Codes-2026.git](https://github.com/Nikola0505stag/FMI-Codes-2026.git)
 cd FMI-Codes-2026
+```
 
 ### 2. Clone the Repository
 ```bash
 cd backend
 pip install -r requirements.txt
 uvicorn main:app --reload
+```
 
 ### 3. Launch the Web Frontend (React)
 ```bash
 cd frontend
 npm install
 npm start
+```
 
 ### 4. Mobile Setup (CallGuard (React Native) )
 ```bash
 cd CallGuard
 npm install
 npm react-native run-android
-
+```
 ---
 
 ## 👥 The Team
