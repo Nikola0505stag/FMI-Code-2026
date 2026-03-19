@@ -42,7 +42,7 @@ git clone [https://github.com/Nikola0505stag/FMI-Codes-2026.git](https://github.
 cd FMI-Codes-2026
 ```
 
-### 2. Clone the Repository
+### 2. Launch the Backend (FastAPI)
 ```bash
 cd backend
 pip install -r requirements.txt
